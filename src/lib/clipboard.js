@@ -1,26 +1,25 @@
-// clipboard.js — MV3-safe "write text to clipboard" for the service worker.
-//
-// THE PROBLEM: an MV3 service worker has no DOM, and `navigator.clipboard`
-// is not reliably available there (no document, no user-gesture focus). The
-// documented, permission-light way to copy from a worker is an OFFSCREEN
-// DOCUMENT: a hidden page the worker can spin up that *does* have a DOM, where
-// a classic `textarea` + `document.execCommand('copy')` works without asking
-// for any host permission. We use the `CLIPBOARD` offscreen reason for this.
-//
-// The popup and options page DON'T use this — they run in a real document and
-// can call `navigator.clipboard.writeText` directly. This helper is only for
-// the context-menu path that originates in the worker.
+/*
+ * Write text to the clipboard from the MV3 service worker.
+ *
+ * A service worker has no DOM and navigator.clipboard isn't reliable there,
+ * so we use an offscreen document: a hidden page with a real DOM where a
+ * textarea + document.execCommand('copy') works without host permissions.
+ *
+ * The popup and options page don't use this; they have a real document and
+ * call navigator.clipboard.writeText directly. This is only for the
+ * context-menu path that runs in the worker.
+ */
 
 import api from './browser-shim.js';
 
 const OFFSCREEN_PATH = 'offscreen/offscreen.html';
 
-// Ensure exactly one offscreen document exists. Chrome allows only one per
-// extension, so we check before creating and tolerate the race where another
-// call created it first.
+/*
+ * Chrome allows only one offscreen document per extension, so check before
+ * creating and tolerate the race where another call beat us to it.
+ */
 async function ensureOffscreenDocument() {
-  // `hasDocument` is the simplest existence check; fall back to clients query on
-  // older builds that lack it.
+  /* hasDocument is the simplest existence check; fall back to a clients query on older builds. */
   if (api.offscreen.hasDocument && (await api.offscreen.hasDocument())) return;
 
   try {
@@ -30,8 +29,7 @@ async function ensureOffscreenDocument() {
       justification: 'Write the cleaned link to the clipboard from the context menu.',
     });
   } catch (err) {
-    // Two near-simultaneous context-menu clicks can both try to create it;
-    // "Only a single offscreen document may be created" is safe to ignore.
+    /* Two near-simultaneous clicks can both try to create it; the "single offscreen document" error is safe to ignore. */
     if (!String(err?.message || err).includes('single offscreen')) throw err;
   }
 }
@@ -43,8 +41,7 @@ async function ensureOffscreenDocument() {
  */
 export async function copyFromWorker(text) {
   await ensureOffscreenDocument();
-  // Message the offscreen document and wait for its ack. We keep the document
-  // alive (cheap, idle) so rapid repeated copies don't pay setup cost each time.
+  /* Message the offscreen document and wait for its ack. Leave it alive so repeated copies skip setup. */
   const response = await api.runtime.sendMessage({
     target: 'offscreen',
     type: 'copy',
