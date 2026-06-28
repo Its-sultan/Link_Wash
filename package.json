@@ -1,0 +1,17 @@
+{
+  "name": "link-wash",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Privacy-first browser extension that strips tracking parameters from links — entirely on your device.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "lint": "node scripts/lint.mjs",
+    "zip": "node scripts/zip.mjs"
+  },
+  "keywords": ["privacy", "tracking", "utm", "url-cleaner", "chrome-extension", "manifest-v3"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}
