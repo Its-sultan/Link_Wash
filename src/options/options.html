@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Link Wash — settings</title>
+    <!-- Reuse the popup's design tokens and components; the options page is the
+         same controls with more breathing room. -->
+    <link rel="stylesheet" href="../popup/popup.css" />
+    <style>
+      /* Options opens in a full tab, so widen the canvas and centre it. */
+      body { width: auto; }
+      .app { max-width: 560px; margin: 24px auto; padding: 0 20px 40px; }
+      .lead { color: var(--text-dim); font-size: 13px; margin: 0 0 8px; }
+    </style>
+  </head>
+  <body>
+    <main class="app" aria-labelledby="opt-title">
+      <header class="head">
+        <h1 id="opt-title" class="title">
+          <span class="mark" aria-hidden="true">🫧</span> Link Wash settings
+        </h1>
+      </header>
+      <p class="lead">
+        Link Wash strips tracking junk from links — entirely on your device.
+        These options also apply to the right-click “Copy clean link” menu.
+      </p>
+
+      <section class="settings" aria-label="Settings" style="border-top: none; margin-top: 4px;">
+        <label class="toggle">
+          <input type="checkbox" id="opt-autocopy" />
+          <span class="toggle-text">
+            Auto-copy on clean
+            <small>In the popup, copy the result as soon as a link is cleaned.</small>
+          </span>
+        </label>
+
+        <label class="toggle">
+          <input type="checkbox" id="opt-aggressive" />
+          <span class="toggle-text">
+            Aggressive mode
+            <small>Also strips <code>ref</code>-style params. Some sites route on
+              these, so this can occasionally change where a link goes — off by
+              default.</small>
+          </span>
+        </label>
+
+        <label class="toggle">
+          <input type="checkbox" id="opt-unwrap" />
+          <span class="toggle-text">
+            Unwrap redirect links
+            <small>Pulls the real destination out of a wrapper link. Decodes the
+              text locally and <strong>never visits the link</strong> — off by
+              default.</small>
+          </span>
+        </label>
+
+        <div class="custom">
+          <h3 class="custom-title">Your own parameters to remove</h3>
+          <p class="hint" style="margin-top: 0;">
+            Add the bare name of any extra parameter you want stripped (no
+            <code>=</code>, no value).
+          </p>
+          <form id="custom-form" class="custom-form">
+            <label class="sr-only" for="custom-input">Parameter name</label>
+            <input
+              id="custom-input"
+              class="custom-input"
+              type="text"
+              placeholder="e.g. affid"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button class="ghost-btn" type="submit">Add</button>
+          </form>
+          <ul id="custom-list" class="chips" aria-label="Your custom parameters"></ul>
+        </div>
+
+        <button id="reset" class="ghost-btn danger" type="button">
+          Reset to defaults
+        </button>
+
+        <p class="privacy">
+          100% local. Link Wash makes zero network requests, has no analytics,
+          and stores your settings only in this browser.
+        </p>
+      </section>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

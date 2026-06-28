@@ -31,7 +31,7 @@ function registerMenus() {
     /* "page" context: right-clicking empty page space. Clean the page's URL. */
     api.contextMenus.create({
       id: MENU_PAGE,
-      title: 'Copy clean link to this page',
+      title: 'Copy clean link to page',
       contexts: ['page'],
     });
   });

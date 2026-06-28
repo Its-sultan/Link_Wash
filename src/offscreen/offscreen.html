@@ -1,0 +1,17 @@
+<!doctype html>
+<!--
+  offscreen.html — a hidden, DOM-bearing page used solely to copy text to the
+  clipboard on behalf of the service worker (see lib/clipboard.js). It is never
+  shown to the user. No styling, no network, nothing but the copy helper.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Link Wash clipboard helper</title>
+  </head>
+  <body>
+    <!-- The textarea is the copy source for document.execCommand('copy'). -->
+    <textarea id="sink" aria-hidden="true" tabindex="-1"></textarea>
+    <script src="offscreen.js"></script>
+  </body>
+</html>

@@ -1,0 +1,414 @@
+/* popup.css — calm, quiet, one clear primary action. Light/dark aware via
+   prefers-color-scheme; motion respects prefers-reduced-motion; colors meet
+   WCAG AA contrast in both themes. System fonts, generous spacing. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Light theme tokens (defaults). */
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --surface-2: #eceef1;
+  --text: #1a1d21;
+  --text-dim: #4b525c; /* darkened for AA contrast on small dim/hint text */
+  --border: #d9dde2;
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+  --strike: #c0353e;       /* removed-text color in the "before" view */
+  --strike-bg: #fdecee;
+  --ok: #16a34a;
+  --danger: #b42318;
+  --chip-bg: #e9edf4;
+  --focus: #2563eb;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --surface: #1e2127;
+    --surface-2: #262a31;
+    --text: #eef1f5;
+    --text-dim: #b6bdc8; /* lightened for AA contrast on dim text */
+    --border: #333941;
+    --accent: #5b8cff;
+    --accent-text: #0b1020;
+    --strike: #ff8b93;
+    --strike-bg: #3a2326;
+    --ok: #4ade80;
+    --danger: #ff9a8f;
+    --chip-bg: #2a2f37;
+    --focus: #7aa2ff;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 360px;
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.app { padding: 14px 14px 16px; }
+
+/* Header */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo {
+  border-radius: 5px;
+  flex: none;
+  display: block;
+}
+
+/* Buttons */
+.icon-btn,
+.ghost-btn,
+.primary-btn {
+  font: inherit;
+  cursor: pointer;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.icon-btn {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-dim);
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+.icon-btn:hover { background: var(--surface-2); color: var(--text); }
+
+.ghost-btn {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+}
+.ghost-btn:hover { background: var(--surface-2); }
+.ghost-btn.danger { color: var(--danger); }
+
+.primary-btn {
+  width: 100%;
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  padding: 10px 12px;
+  font-weight: 600;
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.primary-btn:hover { filter: brightness(1.05); }
+.primary-btn.copied { background: var(--ok); border-color: var(--ok); }
+.primary-btn svg { flex: none; }
+/* Show the copy glyph by default, the checkmark once copied. */
+.primary-btn .check-icon { display: none; }
+.primary-btn.copied .copy-icon { display: none; }
+.primary-btn.copied .check-icon { display: inline; }
+
+/* Input */
+.field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.input {
+  width: 100%;
+  resize: vertical;
+  min-height: 48px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 9px 10px;
+  word-break: break-all;
+}
+.input::placeholder { color: var(--text-dim); }
+
+.input-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+/* Status line */
+.status {
+  margin: 8px 0 0;
+  min-height: 1em;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* States */
+.state { margin-top: 12px; }
+.state-text {
+  margin: 0;
+  padding: 14px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  background: var(--surface);
+  font-size: 13px;
+}
+.ok-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  margin-right: 6px;
+}
+
+.state-text.warn {
+  border-style: solid;
+  border-color: var(--strike);
+  color: var(--text);
+}
+
+/* Result / compare */
+.result { margin-top: 12px; }
+
+/* Win-state summary — the benefit, up top. */
+.summary {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ok);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.summary::before {
+  content: "✓";
+  font-weight: 700;
+}
+.compare {
+  display: grid;
+  gap: 8px;
+}
+.row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+}
+.row-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  margin-bottom: 3px;
+}
+.url {
+  margin: 0;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+.after { color: var(--text); }
+/* The removed substrings inside "before" are wrapped in <del> at runtime. */
+.before del {
+  color: var(--strike);
+  background: var(--strike-bg);
+  text-decoration: line-through;
+  border-radius: 3px;
+  padding: 0 1px;
+}
+
+/* Removed chips */
+.removed { margin-top: 14px; }
+.removed-title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 650;
+}
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--chip-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 12px;
+  cursor: default;
+}
+.chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.chip .chip-key {
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: 600;
+}
+.chip .chip-remove {
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+}
+.chip .chip-remove:hover { color: var(--danger); }
+.hint { margin: 8px 0 0; font-size: 11.5px; color: var(--text-dim); }
+
+/* Restore toggles — one row per removed param, each can be kept back. */
+.toggles { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.trow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 8px;
+}
+.trow:hover { background: var(--surface); }
+.trow.kept { background: var(--surface); }
+.trow-main { min-width: 0; }
+.trow-key {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  display: block;
+  /* Long param names never blow out the row. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.trow-reason {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 1px;
+}
+.trow.kept .trow-key { text-decoration: none; }
+
+/* The switch itself: a small accessible role="switch" button.
+   Off = parameter removed (default). On = parameter kept. */
+.switch {
+  flex: none;
+  width: 34px;
+  height: 20px;
+  border-radius: 999px;
+  border: none;
+  background: var(--surface-2);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: transform 140ms ease;
+}
+.switch[aria-checked="true"] { background: var(--accent); }
+.switch[aria-checked="true"]::after { transform: translateX(14px); }
+.switch:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Settings drawer */
+.settings {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.settings-title { margin: 0 0 10px; font-size: 14px; }
+.toggle {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.toggle input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--accent); }
+.toggle-text { font-size: 13px; }
+.toggle-text small {
+  display: block;
+  color: var(--text-dim);
+  font-size: 11px;
+  margin-top: 2px;
+}
+code {
+  font-family: ui-monospace, Consolas, monospace;
+  background: var(--surface-2);
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+.custom { margin: 10px 0; }
+.custom-title { margin: 0 0 6px; font-size: 13px; }
+.custom-form { display: flex; gap: 6px; }
+.custom-input {
+  flex: 1;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 9px;
+}
+.privacy {
+  margin: 12px 0 0;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Focus visibility — always show a clear ring on keyboard focus. */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Screen-reader-only utility */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respect reduced motion: kill the only transitions we use. */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
