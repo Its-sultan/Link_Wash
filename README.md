@@ -1,6 +1,6 @@
 # <img src="src/icons/icon-48.png" alt="" width="28" align="top"> Link Wash
 
-**Strip tracking junk from any link — instantly, and entirely on your device.**
+**Strip tracking junk from any link, instantly and entirely on your device.**
 
 Right-click any link to copy a clean version, or paste a link into the popup to
 see exactly what gets removed. No accounts, no analytics, **no network requests.**
@@ -12,7 +12,11 @@ see exactly what gets removed. No accounts, no analytics, **no network requests.
 
 ![Link Wash](docs/branding/banner.png)
 
-![Link Wash cleaning a link in the popup](docs/demo.gif)
+See it in action: paste a link and watch the trackers fall away.
+
+<p align="center">
+  <img src="docs/demo.gif" alt="Link Wash cleaning a link in the popup" width="260" />
+</p>
 
 | Light | Dark |
 |:---:|:---:|
@@ -26,7 +30,7 @@ see exactly what gets removed. No accounts, no analytics, **no network requests.
 
 Marketers append tracking parameters to links so they can follow who clicked,
 which campaign worked, and who shared a link. Link Wash removes that cruft,
-leaving a shorter, tidy, private URL — **without** stripping parameters the page
+leaving a shorter, tidy, private URL, **without** stripping parameters the page
 actually needs (like `id=123`, `v=`, `q=`, `page=`).
 
 **Core principles:**
@@ -34,15 +38,15 @@ actually needs (like `id=123`, `v=`, `q=`, `page=`).
 - **One job, done well.** Clean URLs. No QR codes, no encoders, no redirect
   followers, no "toolkit." If a feature would need a network request, it doesn't
   belong here.
-- **100% local & private.** Zero network calls, zero analytics, zero accounts —
-  verifiable as zero requests in DevTools.
+- **100% local & private.** Zero network calls, zero analytics, zero accounts.
+  Verifiable as zero requests in DevTools.
 - **Fewest permissions possible.** Every permission is justified below.
 - **Never break a link.** When unsure whether a param is tracking or functional,
   Link Wash **keeps it**.
 
 ---
 
-## Install (Load unpacked — no build step)
+## Install (Load unpacked, no build step)
 
 Link Wash is plain ES modules and CSS. There is **nothing to compile**.
 
@@ -65,11 +69,11 @@ badge confirms the copy.
 **Popup (paste-to-clean).** Click the toolbar icon, paste a link. It cleans as
 you type and shows:
 
-- a **summary** up top — e.g. *"3 trackers removed · 46% shorter"* — so the win
+- a **summary** up top (e.g. *"3 trackers removed · 46% shorter"*) so the win
   registers before the details;
 - a **before / after** comparison with removed parts struck through;
 - a **restore list**: every removed parameter with a plain-language explanation
-  and a **toggle to keep it** — flip one on and it returns to the link, with the
+  and a **toggle to keep it**. Flip one on and it returns to the link, with the
   strike-through fading out live. Great for the odd `utm` or affiliate ref you
   actually rely on.
 
@@ -83,8 +87,8 @@ clobber your clipboard while you edit.
 | --- | --- | --- |
 | Auto-copy on clean | **On** | Copies the cleaned link when you paste one (or use *Use current tab*). Never fires while you're typing. |
 | Aggressive mode | Off | Also strips `ref`-style params (see the tradeoff below). |
-| Unwrap redirect links | Off | Pulls the real destination out of a wrapper link — **decodes the text only, never visits the link.** |
-| Your own parameters | — | Add any extra param name you want removed. |
+| Unwrap redirect links | Off | Pulls the real destination out of a wrapper link. **Decodes the text only, never visits the link.** |
+| Your own parameters | n/a | Add any extra param name you want removed. |
 
 ---
 
@@ -123,11 +127,11 @@ Full policy: [PRIVACY.md](PRIVACY.md).
 ## What it intentionally does **NOT** do (and why)
 
 These are different products. Bolting them on would dilute the one job, add
-permissions, or — worst of all — require network access. Left out on purpose:
+permissions, or (worst of all) require network access. Left out on purpose:
 
 - **No QR-code generation.** A separate concern; adds UI noise.
 - **No URL encode/decode tools.** That's a developer utility, not link hygiene.
-- **No domain/WHOIS inspector.** Would need network access — a non-starter.
+- **No domain/WHOIS inspector.** Would need network access, a non-starter.
 - **No redirect *checker* that pings servers.** Link Wash unwraps redirects by
   **decoding the string locally**; it will never *visit* a link. A checker that
   follows redirects over the network breaks the privacy promise.
@@ -143,14 +147,14 @@ The denylist lives in [`src/lib/rules.js`](src/lib/rules.js) and is structured s
 adding a parameter is a **one-line change**:
 
 ```js
-// In TRACKING_PARAMS — [param name, plain-language explanation]
+// In TRACKING_PARAMS: [param name, plain-language explanation]
 ['my_tracker', 'What this parameter tracks'],
 ```
 
-- `TRACKING_PARAMS` — exact param names (matched case-insensitively).
-- `TRACKING_PREFIXES` — strip anything starting with a prefix (e.g. `utm_`).
-- `AGGRESSIVE_PARAMS` — `ref`-style params, only stripped in aggressive mode.
-- `FRAGMENT_TRACKERS` — known trackers inside a `#a=b` fragment.
+- `TRACKING_PARAMS`: exact param names (matched case-insensitively).
+- `TRACKING_PREFIXES`: strip anything starting with a prefix (e.g. `utm_`).
+- `AGGRESSIVE_PARAMS`: `ref`-style params, only stripped in aggressive mode.
+- `FRAGMENT_TRACKERS`: known trackers inside a `#a=b` fragment.
 
 Prefer not to edit code? Use **Settings → Your own parameters to remove**.
 
@@ -166,7 +170,7 @@ them when you turn on **Aggressive mode**. Correctness beats aggressiveness.
 ## Develop & test
 
 The cleaning engine is a pure module, so it's fully unit-tested with **no
-framework** — just Node's built-in test runner:
+framework**, just Node's built-in test runner:
 
 ```bash
 npm test     # runs tests/cleaner.test.mjs via `node --test`
@@ -174,8 +178,8 @@ npm run lint # zero-dependency syntax check of every JS file
 npm run zip  # package src/ into link-wash.zip
 ```
 
-There are **no runtime dependencies** and **no build step** — that's deliberate,
-so the shipped code is exactly the code you read.
+There are **no runtime dependencies** and **no build step**, so the shipped code
+is exactly the code you read.
 
 ### Project structure
 
