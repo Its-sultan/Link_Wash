@@ -20,7 +20,7 @@ See it in action: paste a link and watch the trackers fall away.
 
 | Light | Dark |
 |:---:|:---:|
-| ![Link Wash popup cleaning a tracker-laden URL](docs/link-wash-screenshot.png) | ![Link Wash popup in dark mode](docs/link-wash-darkmode.png) |
+| <img src="docs/link-wash-screenshot.png" alt="Link Wash popup cleaning a tracker-laden URL" width="280" /> | <img src="docs/link-wash-darkmode.png" alt="Link Wash popup in dark mode" width="280" /> |
 
 <!-- More art and the screenshot recipe live in docs/. -->
 

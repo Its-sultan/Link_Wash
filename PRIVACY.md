@@ -1,4 +1,4 @@
-# Privacy Policy — Link Wash
+# Privacy Policy for Link Wash
 
 _Last updated: 28 June 2026_
 
@@ -36,4 +36,4 @@ explained in the [README](README.md#permissions-and-why-each-one-is-needed).
 Questions? Open an issue at <https://github.com/Its-sultan/Link_Wash/issues>.
 
 Because Link Wash collects no data, there is nothing to request, export, or
-delete from us — there is no "us" that holds your data.
+delete from us. There is no "us" that holds your data.
