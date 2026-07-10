@@ -8,7 +8,11 @@ see exactly what gets removed. No accounts, no analytics, **no network requests.
 > Link Wash does **one thing well**: it removes tracking parameters (`utm_source`,
 > `fbclid`, `gclid`, and friends) from URLs without breaking the link.
 
-[Source on GitHub](https://github.com/Its-sultan/Link_Wash) · MIT licensed · zero dependencies
+[![Get it on Microsoft Edge](https://img.shields.io/badge/Microsoft%20Edge-Add--on-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/link-wash/ofplnfannogodfifhomgpnpnobopdhhh)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
+
+**→ [Add to Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/link-wash/ofplnfannogodfifhomgpnpnobopdhhh)** · [Source on GitHub](https://github.com/Its-sultan/Link_Wash) · MIT licensed · zero dependencies
 
 ![Link Wash](docs/branding/banner.png)
 
@@ -46,17 +50,24 @@ actually needs (like `id=123`, `v=`, `q=`, `page=`).
 
 ---
 
-## Install (Load unpacked, no build step)
+## Install
+
+**→ [Add to Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/link-wash/ofplnfannogodfifhomgpnpnobopdhhh)** — one click, auto-updates, no setup. This is the recommended way to install.
+
+<details>
+<summary><strong>Developer install (Load unpacked, no build step)</strong></summary>
 
 Link Wash is plain ES modules and CSS. There is **nothing to compile**.
 
 1. Clone or download this repo.
-2. Open `chrome://extensions` (or `edge://extensions`).
+2. Open `edge://extensions` (or `chrome://extensions`).
 3. Turn on **Developer mode** (top right).
 4. Click **Load unpacked** and select the **`src/`** folder.
 5. Pin **Link Wash** to your toolbar. Done.
 
 To package for the store: `npm run zip` produces `link-wash.zip`.
+
+</details>
 
 ---
 

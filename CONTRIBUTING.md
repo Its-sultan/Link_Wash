@@ -4,6 +4,10 @@ Thanks for helping keep links clean. Link Wash has a deliberately narrow scope,
 so the most valuable contributions are usually **new tracking rules** and **bug
 fixes that prevent breaking links** — not new features.
 
+> Just want to *use* Link Wash? Install it in one click from the
+> **[Microsoft Edge Add-ons store](https://microsoftedge.microsoft.com/addons/detail/link-wash/ofplnfannogodfifhomgpnpnobopdhhh)**.
+> This guide is for people who want to contribute code or rules.
+
 ## The one rule that governs everything
 
 **Never break a link.** When you're unsure whether a parameter is tracking or
