@@ -1,5 +1,8 @@
 import { GiCheckeredFlag } from "react-icons/gi";
 import { GrAnnounce } from "react-icons/gr";
+import edgeSvg from "../assets/edge.svg";
+import chromeSvg from "../assets/chrome.svg";
+
 
 export function Banner() {
   return (
@@ -9,9 +12,9 @@ export function Banner() {
           <GrAnnounce className="-mb-1"/>
         </span>
         Now available on 
-        <img src="./src/assets/edge.svg" alt="Microsoft Edge" className="inline-block w-5 h-5 m-2" />
+        <img src={edgeSvg} alt="Microsoft Edge" className="inline-block w-5 h-5 m-2" />
         <span className="font-semibold">Microsoft Edge! </span>
-        <img src="./src/assets/chrome.svg" alt="Chrome" className="inline-block w-5 h-5 m-2" />
+        <img src={chromeSvg} alt="Chrome" className="inline-block w-5 h-5 m-2" />
         Chrome support coming soon.
         <span className="inline-block ml-2 text-blue-200">
          <GiCheckeredFlag className=" text-gray-200 scale-x-[-1] -mb-0.5"/>
