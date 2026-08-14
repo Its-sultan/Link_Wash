@@ -127,14 +127,12 @@ function StepPreview({ step }: { step: number }) {
 }
 
 export function HowItWorks() {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const goToStep = useCallback(
     (index: number) => {
       if (index === currentStep) return;
-      setDirection(index > currentStep ? 1 : -1);
       setCurrentStep(index);
     },
     [currentStep]
