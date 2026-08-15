@@ -1,15 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
-  FiCheckCircle,
-  FiShare2,
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
 import { Reveal } from "../shared/shared";
 import type { Step } from "../types";
-import { LuMousePointerClick } from "react-icons/lu";
+import { LuCombine, LuMousePointerClick } from "react-icons/lu";
+import { PiSealCheckFill } from "react-icons/pi";
 
-const STEP_DURATION = 5000;
+const STEP_DURATION = 4000;
 const STEPS: Step[] = [
   {
     title: "Right-click any link",
@@ -67,7 +66,7 @@ function StepPreview({ step }: { step: number }) {
           <div className="flex items-center justify-center">
             <img src="/logo.png" alt="Link Wash Logo" className="w-4 h-4" />
           </div>
-          <span className="font-bold">Link Wash</span>
+          <span className="font-bold text-white">Link Wash</span>
         </div>
         <div className="text-xs text-slate-400 mb-1.5">
           Paste a link to clean it
@@ -93,16 +92,16 @@ function StepPreview({ step }: { step: number }) {
           ].map((r) => (
             <div
               key={r.k}
-              className="bg-red-600/8 border border-red-600/20 rounded-lg p-3 flex items-center justify-between"
+              className=" border border-red-600/90 rounded-lg p-3 flex items-center justify-between"
             >
               <div>
-                <div className="font-mono text-sm text-red-300 font-semibold">
+                <div className="font-mono text-sm text-red-500 font-semibold">
                   {r.k}
                 </div>
-                <div className="text-xs text-slate-400 mt-0.5">{r.d}</div>
+                <div className="text-xs text-slate-600 dark:text-slate-200 mt-0.5">{r.d}</div>
               </div>
-              <div className="w-10 h-5 bg-slate-600/10 dark:bg-slate-400/10 rounded-full relative">
-                <div className="absolute left-0.5 top-0.5 w-4 h-4 bg-slate-400 rounded-full" />
+              <div className="w-10 h-5 bg-slate-600/30 dark:bg-slate-400/90 rounded-full relative">
+                <div className="absolute left-0.5 top-0.5 w-4 h-4 bg-slate-700 dark:bg-slate-200 rounded-full" />
               </div>
             </div>
           ))}
@@ -112,10 +111,10 @@ function StepPreview({ step }: { step: number }) {
   }
   return (
     <div className="text-center py-5">
-      <div className="w-16 h-16 bg-green-600/15 border-2 border-green-600/40 rounded-full flex items-center justify-center mx-auto mb-4">
-        <FiCheckCircle size={28} className="text-green-500" />
+      <div className="border-none rounded-full flex items-center justify-center mx-auto mb-4">
+        <PiSealCheckFill size={42} className="text-green-500" />
       </div>
-      <div className="font-bold text-base mb-2">Link copied!</div>
+      <div className="font-bold text-base mb-2 dark:text-white">Link copied!</div>
       <div className="text-sm text-slate-400 mb-4">
         3 tracking parameters removed
       </div>
@@ -165,7 +164,7 @@ export function HowItWorks() {
         <Reveal>
           <div className="mb-8">
             <div className="inline-flex items-center gap-2 text-blue-500 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">
-              <FiShare2 size={14} /> How it works
+              <LuCombine size={28} className="text-black"/> How it works
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
               Clean links in
@@ -204,7 +203,7 @@ export function HowItWorks() {
             </div>
 
             {/* Progress bar */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-200 dark:bg-slate-700">
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-200 dark:bg-slate-800">
               <div
                 key={currentStep}
                 className="h-full bg-transparent rounded-r-full transition-all duration-300"

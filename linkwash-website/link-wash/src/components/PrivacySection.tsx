@@ -1,40 +1,38 @@
 
 import { useState } from "react";
 import {
-  FiXCircle,
-  FiKey,
-  FiBarChart2,
-  FiShield,
-  FiFileText,
   FiPlus,
   FiMinus,
 } from "react-icons/fi";
 import { Reveal } from "../shared/shared";
 import type { PrivacyItem } from "../types";
+import { MdNoAccounts, MdOutlineNetworkCheck } from "react-icons/md";
+import { GiGriffinShield, GiNetworkBars } from "react-icons/gi";
+import { TbCodeCircle2Filled } from "react-icons/tb";
 
 const PRIVACY_ITEMS: PrivacyItem[] = [
   {
-    icon: <FiXCircle size={18} />,
+    icon: <MdOutlineNetworkCheck size={22} />,
     title: "Zero network requests",
     body: "Link Wash computes everything locally using your browser's built-in URL and URLSearchParams APIs. No server ever sees your links. You can verify this yourself in DevTools → Network the list stays empty.",
   },
   {
-    icon: <FiKey size={18} />,
+    icon: <MdNoAccounts size={22} />,
     title: "No accounts, ever",
     body: `No sign-up. No email. No OAuth. No "continue with Google." Link Wash installs and works immediately; nothing to create, nothing to verify, nothing to lose access to.`,
   },
   {
-    icon: <FiBarChart2 size={18} />,
+    icon: <GiNetworkBars size={22} />,
     title: "No analytics or telemetry",
     body: `The extension doesn't report home. No usage stats, no crash reports, no "anonymous" telemetry. What you clean stays between you and your device.`,
   },
   {
-    icon: <FiShield size={18} />,
+    icon: <GiGriffinShield size={22} />,
     title: "Minimal permissions",
     body: `Link Wash requests only the permissions it actually needs context menu access and clipboard write. No host permissions, no "read all your data on all websites."`,
   },
   {
-    icon: <FiFileText size={18} />,
+    icon: <TbCodeCircle2Filled size={22} />,
     title: "Free & open source (MIT)",
     body: "Every line of code is public. You don't have to trust our word on any of the above you can read the source, audit it, fork it, or build your own. MIT licensed, no strings attached.",
   },
@@ -62,7 +60,7 @@ export function PrivacySection() {
         <div>
           <Reveal
             as="h2"
-            className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight"
+            className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight dark:text-white"
           >
             Privacy is the
             <br />
