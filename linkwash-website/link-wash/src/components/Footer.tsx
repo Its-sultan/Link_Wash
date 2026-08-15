@@ -18,7 +18,7 @@ function UnderlineLink({ href, icon, children, iconColorClass = "" }: { href: st
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group relative inline-flex items-center gap-2 no-underline text-sm font-medium text-slate-700 dark:text-slate-200 py-1"
+      className="group relative inline-flex items-center gap-2 no-underline text-sm font-medium text-slate-700 py-1"
     >
       {icon && <span className={iconColorClass}>{icon}</span>}
       <span className="relative">
@@ -35,7 +35,7 @@ function NavLink({ href, children, external = false }: { href: string; children:
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className="group relative inline-flex items-center gap-1 no-underline text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors w-fit"
+      className="group relative inline-flex items-center gap-1 no-underline text-sm text-slate-600 dark:text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors w-fit"
     >
       <span className="relative">
         {children}
@@ -61,7 +61,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <div className="flex items-center justify-center">
-              <img src="/logo.png" alt="Link Wash Logo" className="w-6 h-6" />
+              <img src="/logo.png" alt="Link Wash Logo" className="w-9 h-9" />
             </div>
             <span className="font-extrabold text-xl">Link Wash</span>
           </div>
@@ -85,7 +85,7 @@ export function Footer() {
 
         {/* Links */}
         <nav aria-label="Footer" className="flex flex-col gap-3 md:pt-1">
-          <span className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">
+          <span className="text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-600 mb-1">
             Product
           </span>
           <NavLink href="#demo">Demo</NavLink>
@@ -107,7 +107,7 @@ export function Footer() {
 
       <div className="mt-12 pt-6 border-t border-slate-700 dark:border-slate-700 light:border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-600">
         <span>{new Date().getFullYear()} &copy; Link Wash. MIT Licensed.</span>
-        <span className="flex items-center gap-1.5 text-slate-400">
+        <span className="flex items-center gap-1.5 text-slate-400 dark:text-slate-600">
           Crafted by
           <NavLink href={THABIT_URL} external>
             <span className="text-blue-400 font-semibold hover:text-blue-300">

@@ -18,7 +18,7 @@ export function Nav() {
         <li>
           <a
             href="#how"
-            className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium no-underline"
+            className="text-slate-600 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium no-underline"
           >
             How it works
           </a>
@@ -26,7 +26,7 @@ export function Nav() {
         <li>
           <a
             href="#demo"
-            className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium no-underline"
+            className="text-slate-600 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium no-underline"
           >
             Demo
           </a>
@@ -34,7 +34,7 @@ export function Nav() {
         <li>
           <a
             href="#privacy"
-            className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium no-underline"
+            className="text-slate-600 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium no-underline"
           >
             Privacy
           </a>

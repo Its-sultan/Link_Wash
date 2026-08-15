@@ -77,10 +77,10 @@ export function HeroSection() {
           Not tracking tags.
         </h1>
 
-        <p className="mt-6 text-lg leading-relaxed text-slate-400 max-w-xl">
+        <p className="mt-6 text-lg leading-relaxed text-slate-400 -400 max-w-xl">
           Tracking parameters clutter the links you share. Link Wash strips them
           all{" "}
-          <strong className="text-gray-500 dark:text-white light:text-slate-900">
+          <strong className="text-gray-500 light:text-slate-900">
             instantly, locally, privately
           </strong>{" "}
           without breaking the link.
