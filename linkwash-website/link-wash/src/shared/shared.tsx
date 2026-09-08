@@ -21,6 +21,7 @@ export const SAFE: Set<string> = new Set(["id", "q", "v", "page", "s", "search",
 export const EDGE_URL = "https://microsoftedge.microsoft.com/addons/detail/link-wash/ofplnfannogodfifhomgpnpnobopdhhh";
 export const GITHUB_URL = "https://github.com/Its-sultan/Link_Wash";
 export const THABIT_URL = "https://thabitsultan.vercel.app";
+export const BUYMEACOFFEE_URL = "https://buymeacoffee.com/thabitsultan";
 
 
 interface RevealProps {
