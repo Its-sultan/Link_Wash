@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Blob } from "./Blob";
+import { HeroVisual } from "./HeroVisual";
 
 const HEADLINE_WORDS = [
   "clean links.",
@@ -103,8 +103,8 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Right side – Blob component */}
-      <Blob />
+      {/* Right side – alternates LinkReveal / Blob every two days */}
+      <HeroVisual />
     </section>
   );
 }
