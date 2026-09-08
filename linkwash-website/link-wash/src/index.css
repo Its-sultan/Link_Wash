@@ -637,3 +637,57 @@
   from { width: 100%; }
   to { width: 0%; }
 }
+/* ---------- Buy me a Coffee icon ---------- */
+
+@keyframes bmc-steam-rise {
+  0%   { opacity: 0;    transform: translateY(0.5px) scaleY(0.7); }
+  20%  { opacity: 0.95; }
+  65%  { opacity: 0.6; }
+  100% { opacity: 0;    transform: translateY(-4px) scaleY(1.2); }
+}
+
+@keyframes bmc-cup-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-0.7px) rotate(-2deg); }
+}
+
+@keyframes bmc-cup-sip {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  35%      { transform: translateY(-1.2px) rotate(-11deg) scale(1.04); }
+  70%      { transform: translateY(-0.4px) rotate(4deg) scale(1.02); }
+}
+
+.bmc-steam {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bmc-steam-rise 2.4s ease-in-out infinite;
+}
+
+.bmc-steam-2 { animation-delay: 0.4s; }
+.bmc-steam-3 { animation-delay: 0.8s; }
+
+.bmc-cup {
+  transform-box: fill-box;
+  transform-origin: 50% 85%;
+  animation: bmc-cup-bob 3.2s ease-in-out infinite;
+}
+
+.group:hover .bmc-cup {
+  animation: bmc-cup-sip 1s ease-in-out infinite;
+}
+
+.group:hover .bmc-steam {
+  animation-duration: 1.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmc-steam,
+  .bmc-cup,
+  .group:hover .bmc-cup,
+  .group:hover .bmc-steam {
+    animation: none !important;
+  }
+
+  .bmc-steam { opacity: 0.6; }
+}
